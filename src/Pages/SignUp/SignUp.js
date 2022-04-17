@@ -26,7 +26,7 @@ const SignUp = () => {
     return (
         <div className='signup' >
             <div className="from-box">
-            <div className=" w-50  signupForm p-5">
+            <div className="  signupForm p-5">
                 <h1 className='text-center'>Sign Up</h1>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="mb-3">
@@ -68,14 +68,14 @@ const SignUp = () => {
                     </Form.Group>
                 </Row>
                 <Row className='mb-3'>
-                <Form.Group as={Col} md="6" controlId="validationCustom03">
+                <Form.Group as={Col} md="6" controlId="validationCustom04">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" required />
                     <Form.Control.Feedback type="invalid">
                         Please provide password.
                     </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group as={Col} md="6" controlId="validationCustom03">
+                    <Form.Group as={Col} md="6" controlId="validationCustom05">
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control type="password" placeholder="Confirm Password" required />
                     <Form.Control.Feedback type="invalid">

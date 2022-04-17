@@ -15,6 +15,7 @@
 .signupForm{
     background-color: rgba(0, 0, 0, 0.639);
     border-radius: 20px;
+    width: 50%;
 }
 Form {
     outline: none;
