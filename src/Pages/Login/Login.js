@@ -13,6 +13,9 @@ const Login = () => {
         event.stopPropagation();
       }
       setValidated(true);
+
+
+      
     };
 
   const handleRegister=()=>{
@@ -25,7 +28,7 @@ const forgetPassword=()=>{
     return (
         <div className='Login' >
             <div className="from-box">
-            <div className="LoginForm p-5">
+            <div className=" LoginForm p-5">
                 <h1 className='text-center'>Login</h1>
 
             <Form noValidate validated={validated} onSubmit={handleSubmit}>

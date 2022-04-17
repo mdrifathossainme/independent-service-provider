@@ -9,12 +9,18 @@ const SignUp = () => {
     const navigate=useNavigate()
 
     const handleSubmit = (event) => {
+        event.preventDefault();
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
       }
       setValidated(true);
+      console.log(event.target.email.value)
+
+
+
+
     };
 
     const handlecheck =(event)=>{
@@ -32,12 +38,12 @@ const SignUp = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} md="6" controlId="validationCustom01">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control required type="text" placeholder="First name"/>
+                        <Form.Control name="fistname"  type="text" placeholder="First name"/>
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" controlId="validationCustom02">
                         <Form.Label>Last name</Form.Label>
-                        <Form.Control required type="text" placeholder="Last name"
+                        <Form.Control name="lastname" type="text" placeholder="Last name"
                         />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
@@ -49,7 +55,7 @@ const SignUp = () => {
                         <Form.Label>Username</Form.Label>
                         <InputGroup hasValidation>
                             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                            <Form.Control    type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required
+                            <Form.Control name="username"   type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required
                             />
                             <Form.Control.Feedback type="invalid">
                             Please choose a username.
@@ -61,7 +67,7 @@ const SignUp = () => {
                 <Row className="mb-3 mt-3">
                     <Form.Group as={Col} md="12" controlId="validationCustom03">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Email" required />
+                    <Form.Control name='email' type="email" placeholder="Email" required />
                     <Form.Control.Feedback type="invalid">
                         Please provide Email.
                     </Form.Control.Feedback>
@@ -70,14 +76,14 @@ const SignUp = () => {
                 <Row className='mb-3'>
                 <Form.Group as={Col} md="6" controlId="validationCustom04">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" required />
+                    <Form.Control  name="password" type="password" placeholder="Password" required />
                     <Form.Control.Feedback type="invalid">
                         Please provide password.
                     </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" controlId="validationCustom05">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" placeholder="Confirm Password" required />
+                    <Form.Control name="cpassword" type="password" placeholder="Confirm Password" required />
                     <Form.Control.Feedback type="invalid">
                         Please provide Password.
                     </Form.Control.Feedback>
