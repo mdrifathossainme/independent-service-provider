@@ -7,6 +7,7 @@ import {eye} from 'react-icons-kit/feather/eye'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useSignInWithGithub,useSignInWithGoogle,useSignInWithFacebook } from 'react-firebase-hooks/auth';
 
 
 
@@ -31,6 +32,9 @@ const Login = () => {
       }
 
       const [ signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+      const [signInWithGithub, userGit, loadingGit, erroGitr] = useSignInWithGithub(auth);
+      const [signInWithGoogle, userGoogle, loadingGoogle, erroGoogle] = useSignInWithGoogle(auth);
+      const [signInWithFacebook, userFacebook, loadingFacebook, erroFacebook] = useSignInWithFacebook(auth);
 
    
     const handleSubmit = (event) => {
@@ -48,9 +52,11 @@ const Login = () => {
       signInWithEmailAndPassword(email,password);
       if(user){
           alert('thank for login')
-      }
+          event.target.email.value="";
+          event.target.password.value="";
+        }
       if(error){
-        // setCustomError(error.message)
+        setCustomError(error.message)
         return
     }
 
@@ -62,6 +68,15 @@ const Login = () => {
   }
 const forgetPassword=()=>{
 
+}
+const handleGoogle=()=>{
+    signInWithGoogle()
+}
+const handlefacebook=()=>{
+    signInWithFacebook()
+}
+const handleGithub=()=>{
+    signInWithGithub()
 }
 
     return (
@@ -108,9 +123,9 @@ const forgetPassword=()=>{
             </div>
 
             <div className="social-link">
-                <img src={"https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/google-color.svg"} alt="" />
-                <img src={"https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/facebook-round-color.svg"} alt="" />
-                <img src={"https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/github.svg"} alt="" />
+                <img onClick={handleGoogle} src={"https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/google-color.svg"} alt="" />
+                <img onClick={handlefacebook} src={"https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/facebook-round-color.svg"} alt="" />
+                <img onClick={handleGithub} src={"https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/github.svg"} alt="" />
                 
             </div>
             </div>
