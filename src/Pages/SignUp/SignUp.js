@@ -9,15 +9,17 @@ import {eye} from 'react-icons-kit/feather/eye'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 
 const SignUp = () => {
+    const navigate=useNavigate();
     const [validated, setValidated] = useState(false);
     const [disable, setDisable]=useState(false);
-    const navigate=useNavigate();
     const [vpassword,setVpassword]=useState('');
-
     const [type, setType]=useState('password');
     const [type2, setType2]=useState('password');
     const [icon, setIcon]=useState(eyeOff);
     const [icon2, setIcon2]=useState(eyeOff);
+
+    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth);
+    const [customError,setCustomError]=useState('');
 
 
     const handleToggle1=()=>{    
@@ -42,7 +44,6 @@ const SignUp = () => {
         }
       }
 
-    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth);
 
 
     const handleSubmit = (event) => {
@@ -64,7 +65,7 @@ const SignUp = () => {
         setVpassword(password)
     }
     else{
-        console.log("password don't match");
+        setCustomError("password don't match");
         return;
     }
 
@@ -86,13 +87,13 @@ const SignUp = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} md="6" controlId="validationCustom01">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control name="fastname"  type="text" placeholder="First name"/>
+                        <Form.Control name="fastname"  type="text" placeholder="First name" required />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" controlId="validationCustom02">
                         <Form.Label>Last name</Form.Label>
                         <Form.Control name="lastname" type="text" placeholder="Last name"
-                        />
+                       required />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
                     
@@ -126,8 +127,7 @@ const SignUp = () => {
                     <Form.Label>Password</Form.Label>
                     <span className='password' >
                     <Form.Control  name="password" type={type} placeholder="Password" required />
-                    <span ><Icon onClick={handleToggle1} icon={icon} className='eyeicon1' size={25}/></span>
-                            
+                    <span ><Icon onClick={handleToggle1} icon={icon} className='eyeicon1' size={25}/></span>   
                     </span>
                     <Form.Control.Feedback type="invalid">
                         Please provide password.
@@ -144,7 +144,7 @@ const SignUp = () => {
                     </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
-
+                <p className='text-danger' >{customError}</p>
                 <Form.Group className="mb-3">
                     <Form.Check onClick={handlecheck}  label="Agree for  Create Account" feedback="You must agree before submitting." feedbackType="invalid"
                     />

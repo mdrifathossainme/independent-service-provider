@@ -2,12 +2,39 @@ import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import "./Login.css"
-import {EyeIcon , EyeOffIcon} from '@heroicons/react/solid';
+import { Icon } from 'react-icons-kit';
+import {eye} from 'react-icons-kit/feather/eye'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+
+
+
 const Login = () => {
     const [validated, setValidated] = useState(false);
     const navigate=useNavigate();
+    const [customError,setCustomError]=useState('');
 
+
+    const [type, setType]=useState('password');
+    const [icon, setIcon]=useState(eyeOff);
+
+    const handleToggle=()=>{    
+        if(type==='password'){
+          setIcon(eye);      
+          setType('text');
+        }
+        else{
+          setIcon(eyeOff);     
+          setType('password');
+        }
+      }
+
+      const [ signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+
+   
     const handleSubmit = (event) => {
+        event.preventDefault();
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         event.preventDefault();
@@ -15,11 +42,21 @@ const Login = () => {
       }
       setValidated(true);
 
-     
+      const email=(event.target.email.value);
+      const password=(event.target.password.value);
 
+      signInWithEmailAndPassword(email,password);
+      if(user){
+          alert('thank for login')
+      }
+      if(error){
+        // setCustomError(error.message)
+        return
+    }
 
     };
-
+  
+  
   const handleRegister=()=>{
     navigate('/signup')
   }
@@ -37,22 +74,25 @@ const forgetPassword=()=>{
                 <Row className="mb-3 mt-3">
                     <Form.Group as={Col} md="12" controlId="validationCustom03">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Email" required />
+                    <Form.Control name="email" type="email" placeholder="Email" required />
                     <Form.Control.Feedback type="invalid">
                         Please provide Email.
                     </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
                 <Row className='mb-1'>
-                <Form.Group as={Col} md="12" controlId="validationCustom03">
+                <Form.Group as={Col} md="12" controlId="validationCustom">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" required />
+                    <span className='password' >
+                    <Form.Control name="password"  type={type} placeholder="Password" required />
+                    <span ><Icon onClick={handleToggle} icon={icon} className='eyeicon' size={25}/></span>   
+                    </span>
                     <Form.Control.Feedback type="invalid">
                         Please provide password.
                     </Form.Control.Feedback>
                 </Form.Group>
                 </Row>
-
+                <p className='text-danger'>{customError}</p>
                 <Button  className='w-100 mt-4' type="submit" >Sign Up</Button>
 
             </Form>

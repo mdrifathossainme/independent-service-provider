@@ -12,6 +12,17 @@
     border-radius: 20px;
     width: 50%;
 };
+.password1{
+    position: relative;
+}
+.eyeicon{
+    position: absolute;
+    left: 430px;
+    top: 35px;
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+}
 
 
  
