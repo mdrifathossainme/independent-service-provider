@@ -1,0 +1,29 @@
+.card-items{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.card-items img{
+    padding:30px 50px;
+ }
+ .cardsitem{
+     transition: .3s ease-in-out;
+ }
+ .cardsitem:hover{
+     transform: scale(1.01);
+     box-shadow: 1px 10px 30px rgba(128, 128, 128, 0.308);
+ }
+
+@media screen and (max-width:600px) {
+    .card-items{
+        grid-template-columns: 1fr;
+    }
+    .card-items img{
+       padding: 50px;
+    }
+    .cardsitem:hover{
+        transform:none ;
+        box-shadow: 1px 10px 30px rgba(128, 128, 128, 0.308);
+    }
+   
+}
