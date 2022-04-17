@@ -1,8 +1,5 @@
 import { useState } from "react";
 import './Tab.css'
-import BreakFast from "../MealTime/BreakFast/BreakFast";
-import Lunch from "../MealTime/Lunch/Lunch";
-import Dinner from "../MealTime/Dinner/Dinner";
 import { useNavigate } from "react-router-dom";
 const Tabs=()=> {
   const [toggleState, setToggleState] = useState(2);
@@ -41,19 +38,19 @@ navigate('/allFood')
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-             <BreakFast/>
+             <img src={"https://therealchamps.com/wp-content/uploads/getty-images/2020/07/962797074.jpeg"} alt="" />
         </div>
 
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-       <Lunch/>
+       <img src={"https://therealchamps.com/wp-content/uploads/getty-images/2020/07/962797074.jpeg"} alt="" />
         </div>
 
         <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
-          <Dinner/>
+          <img src={"https://therealchamps.com/wp-content/uploads/getty-images/2020/07/962797074.jpeg"} alt="" />
         </div>
       </div>
       <div className="btn flex justify-center">

@@ -32,6 +32,9 @@ const Home = () => {
           <h1 className='text-center my-5'> My Coaching Service</h1>
           <CardItem/>
       </div>
+      <div className="Tabs">
+          {/* <Tabs/> */}
+      </div>
       </>
     );
 };
