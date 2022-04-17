@@ -1,12 +1,49 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import "./SignUp.css"
+import "./SignUp.css";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { Icon } from 'react-icons-kit';
+import {eye} from 'react-icons-kit/feather/eye'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 
 const SignUp = () => {
     const [validated, setValidated] = useState(false);
-    const [disable, setDisable]=useState(false)
-    const navigate=useNavigate()
+    const [disable, setDisable]=useState(false);
+    const navigate=useNavigate();
+    const [vpassword,setVpassword]=useState('');
+
+    const [type, setType]=useState('password');
+    const [type2, setType2]=useState('password');
+    const [icon, setIcon]=useState(eyeOff);
+    const [icon2, setIcon2]=useState(eyeOff);
+
+
+    const handleToggle1=()=>{    
+        if(type==='password'){
+          setIcon(eye);      
+          setType('text');
+        }
+        else{
+          setIcon(eyeOff);     
+          setType('password');
+        }
+      }
+
+    const handleToggle2=()=>{    
+        if(type==='password'){
+          setIcon2(eye);      
+          setType2('text');
+        }
+        else{
+          setIcon2(eyeOff);     
+          setType2('password');
+        }
+      }
+
+    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,11 +53,22 @@ const SignUp = () => {
         event.stopPropagation();
       }
       setValidated(true);
-      console.log(event.target.email.value)
+    const email=(event.target.email.value);
+    const password=(event.target.password.value);
+    const cpassword=(event.target.cpassword.value);
+    const fastname=(event.target.fastname.value);
+    const lastname=(event.target.lastname.value);
+    const username=(event.target.username.value);
 
+    if(password===cpassword){
+        setVpassword(password)
+    }
+    else{
+        console.log("password don't match");
+        return;
+    }
 
-
-
+    createUserWithEmailAndPassword(email,vpassword)
     };
 
     const handlecheck =(event)=>{
@@ -38,7 +86,7 @@ const SignUp = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} md="6" controlId="validationCustom01">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control name="fistname"  type="text" placeholder="First name"/>
+                        <Form.Control name="fastname"  type="text" placeholder="First name"/>
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" controlId="validationCustom02">
@@ -76,14 +124,21 @@ const SignUp = () => {
                 <Row className='mb-3'>
                 <Form.Group as={Col} md="6" controlId="validationCustom04">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control  name="password" type="password" placeholder="Password" required />
+                    <span className='password' >
+                    <Form.Control  name="password" type={type} placeholder="Password" required />
+                    <span ><Icon onClick={handleToggle1} icon={icon} className='eyeicon1' size={25}/></span>
+                            
+                    </span>
                     <Form.Control.Feedback type="invalid">
                         Please provide password.
                     </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" controlId="validationCustom05">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control name="cpassword" type="password" placeholder="Confirm Password" required />
+                     <span className='password' >
+                    <Form.Control  name="cpassword" type={type2} placeholder="Confirm Password" required />
+                    <span ><Icon onClick={handleToggle2} icon={icon2} className='eyeicon2' size={25}/></span></span>
+
                     <Form.Control.Feedback type="invalid">
                         Please provide Password.
                     </Form.Control.Feedback>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import "./Login.css"
+import {EyeIcon , EyeOffIcon} from '@heroicons/react/solid';
 const Login = () => {
     const [validated, setValidated] = useState(false);
     const navigate=useNavigate();
@@ -14,8 +15,9 @@ const Login = () => {
       }
       setValidated(true);
 
+     
 
-      
+
     };
 
   const handleRegister=()=>{
@@ -41,7 +43,6 @@ const forgetPassword=()=>{
                     </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
-
                 <Row className='mb-1'>
                 <Form.Group as={Col} md="12" controlId="validationCustom03">
                     <Form.Label>Password</Form.Label>
