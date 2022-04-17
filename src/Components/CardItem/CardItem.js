@@ -14,6 +14,7 @@ const CardItem = () => {
                     <Card.Text>
                     The UEFA Champions League is an annual club football competition organised by the Union of European Football Associations and contested by top-division European clubs
                     </Card.Text>
+                    <h1 style={{fontSize:"18px"}}> <b>Salary: </b> $20m <sup>yearly</sup></h1>
                     <Link to="/checkout">  <Button variant="primary w-100">Hired For This Tournament</Button></Link>
                    
                 </Card.Body>
@@ -25,6 +26,7 @@ const CardItem = () => {
                     <Card.Text>
                     The Campeonato Nacional de Liga de Primera División, commonly known simply as Primera División in Spain, and as La Liga in English-speaking countries  LaLiga Santander
                     </Card.Text>
+                    <h1 style={{fontSize:"18px"}}> <b>Salary: </b> $14m <sup>yearly</sup></h1>
                     <Link to="/checkout">  <Button variant="primary w-100">Hired For This Tournament</Button></Link>
                 </Card.Body>
             </Card>
@@ -35,6 +37,7 @@ const CardItem = () => {
                     <Card.Text>
                     The Premier League, also known as the English Premier League or the EPL, is the top level of the English football league system. Contested by 20 clubs, 
                     </Card.Text>
+                    <h1 style={{fontSize:"18px"}}> <b>Salary: </b> $18m <sup>yearly</sup></h1>
                     <Link to="/checkout">  <Button variant="primary w-100">Hired For This Tournament</Button></Link>
                    
                 </Card.Body>
@@ -46,6 +49,7 @@ const CardItem = () => {
                     <Card.Text>
                     The Bundesliga, sometimes referred to as the Fußball-Bundesliga or 1. Bundesliga, is a professional association football league in Germany
                     </Card.Text>
+                    <h1 style={{fontSize:"18px"}}> <b>Salary: </b> $13m <sup>yearly</sup></h1>
                     <Link to="/checkout">  <Button variant="primary w-100">Hired For This Tournament</Button></Link>
                 </Card.Body>
             </Card>
@@ -56,6 +60,7 @@ const CardItem = () => {
                     <Card.Text>
                     Ligue 1, officially known as Ligue 1 Uber Eats for sponsorship reasons, is a French professional league for men's association football clubs
                     </Card.Text>
+                    <h1 style={{fontSize:"18px"}}> <b>Salary: </b> $12m <sup>yearly</sup></h1>
                     <Link to="/checkout">  <Button variant="primary w-100">Hired For This Tournament</Button></Link>
                    
                 </Card.Body>

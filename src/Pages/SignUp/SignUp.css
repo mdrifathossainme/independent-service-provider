@@ -1,0 +1,53 @@
+.signup{
+    background-image: url("https://i.ibb.co/DMz1W7B/5205447.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+}
+.from-box{
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+}
+.signupForm{
+    background-color: rgba(0, 0, 0, 0.639);
+    border-radius: 20px;
+}
+Form {
+    outline: none;
+}
+
+.or{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.or p{
+    margin-top: 10px;
+}
+.div{
+    width: 100%;
+    margin: 0 10px;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.58);
+}
+.social-link{
+    display: flex;
+    justify-content:space-evenly;
+}
+.social-link img{
+    cursor: pointer;
+    width: 50px;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.58) ;
+    background-color: #fff;
+    border-radius: 50%;
+    filter:brightness(.8);
+}
+.social-link img:hover{
+    filter:brightness(1);
+
+}
