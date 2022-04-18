@@ -7,3 +7,19 @@
     width: 70px;
 
 }
+@media screen and (max-width:600px) {
+    .logo{
+        margin-bottom: 20px;
+    }
+    .nav-item{
+        margin-bottom: 20px;
+    }
+    .logout{
+        margin-left: 30px;
+    }
+    .login{
+        margin-left:13px ;
+        display: flex;
+        flex-direction: column;
+    }
+}

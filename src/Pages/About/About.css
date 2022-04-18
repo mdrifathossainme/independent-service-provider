@@ -1,0 +1,24 @@
+.aboutme{
+    padding-top: 50px;
+}
+.aboutme-content{
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+ 
+@media screen and (max-width:600px) {
+    .aboutme-content{
+        grid-template-columns:1fr;
+       
+
+    }
+    .aboutme-left{
+        order: 2;
+    }
+    .about-right{
+        order: 1;
+    }
+}

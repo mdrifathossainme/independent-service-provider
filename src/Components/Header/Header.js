@@ -26,7 +26,7 @@ const Header = () => {
         </Nav>
         <Nav>
          {
-           user? <Link onClick={handleSigneOut} className='nav-item' to="/login">Log Out</Link>: <div>
+           user? <Link onClick={handleSigneOut} className='nav-item logout' to="/login">Log Out</Link>: <div className='login'>
              <Link className='nav-item' to="/login">Login</Link> <Link className='nav-item' to="/signup">Sign Up</Link></div>
          }
            

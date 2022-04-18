@@ -1,0 +1,13 @@
+.notFound{
+    background-image: url('https://i.ibb.co/Wp8HSMX/notfound-prev-ui.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size:contain;
+     height: 90vh;
+     width: 100%;
+ }
+ .texth1{
+     font-size: 70px;
+     padding-bottom: 100vh;
+     background-color: rgba(18, 18, 17, 0.208);
+ }
