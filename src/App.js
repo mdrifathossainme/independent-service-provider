@@ -10,6 +10,7 @@ import Blog from "./Pages/Blog/Blog"
 import NotFound from "./Pages/NotFound/NotFound"
 import Login from "./Pages/Login/Login"
 import SignUp from "./Pages/SignUp/SignUp"
+import RequierAuth from './Components/RequierAuth';
 
 function App() {
   return (
@@ -20,7 +21,13 @@ function App() {
      <Route path="/home" element={<Home/>} />
      <Route path='/about' element={<About/>} />
      <Route path='/blog' element={<Blog/>} />
-     <Route path='/checkout' element={<Checkout/>} />
+     <Route path='/checkout' element={
+     <RequierAuth>
+       <Checkout/>
+     </RequierAuth>
+     } />
+
+     
      <Route path='/login' element={<Login/>} />
      <Route path='/signup' element={<SignUp/>} />
      <Route path='/checkout' element={<Checkout/>} />

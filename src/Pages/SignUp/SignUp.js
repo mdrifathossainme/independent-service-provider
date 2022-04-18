@@ -20,10 +20,11 @@ const SignUp = () => {
     const [icon, setIcon]=useState(eyeOff);
     const [icon2, setIcon2]=useState(eyeOff);
 
-    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
       const [signInWithGithub, userGit, loadingGit, erroGitr] = useSignInWithGithub(auth);
       const [signInWithGoogle, userGoole, loadingGoogle, erroGoogle] = useSignInWithGoogle(auth);
       const [signInWithFacebook, userFacebook, loadingFacebook, erroFacebook] = useSignInWithFacebook(auth);
+      const [sendEmailVerification, sending, errorveri] = useSendEmailVerification(auth);
     const [customError,setCustomError]=useState('');
 
 
@@ -74,8 +75,12 @@ const SignUp = () => {
         return;
     }
 
-    createUserWithEmailAndPassword(email,vpassword)
+    createUserWithEmailAndPassword(email,vpassword);
     };
+
+    const handleSignup=()=>{
+        
+    }
 
     const handlecheck =(event)=>{
         setDisable(event.target.checked)
@@ -164,9 +169,9 @@ const handleGithub=()=>{
                     <Form.Check onClick={handlecheck}  label="Agree for  Create Account" feedback="You must agree before submitting." feedbackType="invalid"
                     />
                 </Form.Group >
-                <Button disabled={!disable} className='w-100' type="submit" >Sign Up</Button>
+                <Button onClick={handleSignup} disabled={!disable} className='w-100' type="submit" >Sign Up</Button>
             </Form>
-            <p className='mt-4'>I have Already Account <span style={{cursor:"pointer"}} className='text-primary' onClick={handleLogin}>Login</span> </p>
+            <p className='mt-4'>I have Already Account <span style={{cursor:"pointer"}} className='text-primary'onClick={handleLogin} >Login</span> </p>
             <div className="or">
                 <div className="div"></div>
                     <p>or</p>
