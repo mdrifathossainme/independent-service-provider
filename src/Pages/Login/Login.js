@@ -9,6 +9,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword,useSignInWithG
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import Loading from '../../Components/Spinner';
 
 
 const Login = () => {
@@ -18,7 +19,8 @@ const Login = () => {
     const emailRef=useRef('');
     const [type, setType]=useState('password');
     const [icon, setIcon]=useState(eyeOff);
-
+    const [user]=useAuthState(auth);
+    const location=useLocation();
     const handleToggle=()=>{    
         if(type==='password'){
           setIcon(eye);      
@@ -65,7 +67,7 @@ const Login = () => {
   
   
   const handleRegister=()=>{
-    // navigate('/signup')
+    navigate('/signup')
   }
 const forgetPassword= async (event)=>{
     const email=(emailRef.current.value)
@@ -86,10 +88,11 @@ const handlefacebook=()=>{
 const handleGithub=()=>{
     signInWithGithub()
 }
+if(loading ||loadingGit|| loadingGoogle|| loadingFacebook){
+    return <Loading/>
+}
 
 
-const [user]=useAuthState(auth);
-const location=useLocation();
 const from= location.state?.from?.pathname ||"/"
 
         if(user){

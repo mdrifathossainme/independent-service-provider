@@ -11,7 +11,6 @@ import { useSignInWithGithub,useSignInWithGoogle,useSignInWithFacebook } from 'r
 import { useSendEmailVerification } from 'react-firebase-hooks/auth';
 
 const SignUp = () => {
-    const navigate=useNavigate();
     const [validated, setValidated] = useState(false);
     const [disable, setDisable]=useState(false);
     const [vpassword,setVpassword]=useState('');
@@ -85,6 +84,8 @@ const SignUp = () => {
     const handlecheck =(event)=>{
         setDisable(event.target.checked)
     }
+    const navigate=useNavigate();
+
   const handleLogin=()=>{
     navigate('/login')
   }
